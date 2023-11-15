@@ -4,6 +4,7 @@ body{
 
 body, div, input, a, li, ul, textarea, span, p, h1, h2, h3, ol ,aside, main{
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
