@@ -28,3 +28,9 @@
 .button-primary-bordered:hover{
     opacity: 0.8;
 }
+
+.button-secondary-bordered{
+    border: 1px solid #bcbebf;
+    background-color: #fafafa;
+    color: #303233;
+}
