@@ -5,6 +5,8 @@ import {END_POINT} from '@/config/end-point'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import AutoCompliteSelect from '@/components/AutoCompliteSelect'
+import SelectDate from '@/components/SelectDate'
+
 export default function CreateResume() {
     const [cities, setCities] = useState([])
   useEffect(()=>{
@@ -28,6 +30,11 @@ export default function CreateResume() {
             <Input placeholder="" type="text" label="Фамилия" size="fieldset-md"/>
             <Input placeholder="" type="text" label="Мобильный телефон" size="fieldset-md"/>
             <AutoCompliteSelect placeholder="" type="text" label="Город проживания" size="fieldset-md" items = {cities} onSelect={onSelect}/>
+
+            <h3>Основная информация</h3>
+
+             
+
         </div>
 
     </main>
