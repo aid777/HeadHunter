@@ -6,11 +6,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import AutoCompliteSelect from '@/components/AutoCompliteSelect'
 import SelectDate from '@/components/SelectDate'
+import ModalAddExp from '@/components/ModalAddExp'
 
 export default function CreateResume() {
     const [cities, setCities] = useState([])
     const [countries, setCountries] = useState([])
-  useEffect(()=>{
+    useEffect(()=>{
     axios.get(`${END_POINT}/api/region/cities`).then( res =>{
       setCities(res.data)
     })
@@ -20,7 +21,8 @@ export default function CreateResume() {
     })
   }, [])
 
-
+console.log(cities)
+console.log(countries)
   const onSelect = (data) => {
     console.log("onSelect", data)
   }
@@ -51,11 +53,39 @@ export default function CreateResume() {
                   </div>
                 </div>
             </fieldset>
-
+            
             <AutoCompliteSelect placeholder="" type="text" label="Гражданство" size="fieldset-md" items = {countries} onSelect={onSelect}/>
 
-        </div>
+            <h3>Специальность</h3>
 
+            <Input placeholder="" type="text" label="Желаемая должность" size="fieldset-lg"/>
+
+            <fieldset className={"fieldset fieldset-lg"}>
+                <label>Зарплата</label>
+                <div className='salary'>
+                    <input placeholder="" type="text" className='input'/>
+                    <select className='input'>
+                      <option>KZT</option>
+                      <option>USD</option>
+                      <option>RUB</option>
+                    </select>
+                    на ркуи
+                </div>
+            </fieldset>
+
+            <h3>Опыт работы</h3>
+            <ModalAddExp />
+            <fieldset className={"fieldset fieldset-lg"}>
+
+          <div className="exp">
+            <label>Места работы</label>
+                <div>
+                  
+                </div>
+                  <button className='button button-primary-bordered'>Добавить место работы</button>
+                </div>
+          </fieldset>
+        </div>
     </main>
   )
 }
