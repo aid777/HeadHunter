@@ -7,10 +7,14 @@ import { useEffect, useState } from 'react'
 import AutoCompliteSelect from '@/components/AutoCompliteSelect'
 import SelectDate from '@/components/SelectDate'
 import ModalAddExp from '@/components/ModalAddExp'
+import WorkingHistory from '@/components/workingHistory'
 
 export default function CreateResume() {
     const [cities, setCities] = useState([])
     const [countries, setCountries] = useState([])
+    const [workingHistories, setWorkingHistories ] = useState([])
+
+    const [modalExpIsOpen, setModalExpIsOpen] = useState(false) 
     useEffect(()=>{
     axios.get(`${END_POINT}/api/region/cities`).then( res =>{
       setCities(res.data)
@@ -27,8 +31,24 @@ console.log(countries)
     console.log("onSelect", data)
   }
 
+  const closeModalExp = () => {
+    setModalExpIsOpen(false)
+  }
+
+  const addWorkingHistory = (item) => {
+    setWorkingHistories ([...workingHistories, item])
+    closeModalExp();
+  }
+
+  const removeWorkingHistory = (removeWorkingHistory) => {
+    let wh = [...workingHistories]
+    let index = workingHistories.indexOf(workingHistory)
+    wh.splice(index, 1)
+    setWorkingHistories(wh)
+  }
+
   return (
-    <main >
+    <main>
         <Header/>
         <div className='container'>
             <h1 className='ptb7'>Ваше резюме</h1>
@@ -69,21 +89,18 @@ console.log(countries)
                       <option>USD</option>
                       <option>RUB</option>
                     </select>
-                    на ркуи
+                    на руки
                 </div>
             </fieldset>
 
             <h3>Опыт работы</h3>
-            <ModalAddExp />
+            {modalExpIsOpen && <ModalAddExp close={closeModalExp} addWorkingHistory={addWorkingHistory}/>}
             <fieldset className={"fieldset fieldset-lg"}>
 
           <div className="exp">
-            <label>Места работы</label>
-                <div>
-                  
-                </div>
-                  <button className='button button-primary-bordered'>Добавить место работы</button>
-                </div>
+                  {workingHistories.map(item => <WorkingHistory workingHistory={item} remove={removeWorkingHistory}/>)}
+                  <button className='button button-primary-bordered' onClick={()=> setModalExpIsOpen(true)}>Добавить место работы</button>
+          </div>
           </fieldset>
         </div>
     </main>
