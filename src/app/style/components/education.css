@@ -1,0 +1,11 @@
+.education{
+    position: relative;
+    width: fit-content;
+}
+
+.education span{
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: -30px;
+}
