@@ -3,8 +3,9 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     z-index: 20;
+    overflow-y: auto;
 }
 
 .modal-backdrop{
@@ -24,6 +25,7 @@
     max-width: 500px;
     margin: 100px auto 0;
     z-index: 2;
+
 }
 
 
