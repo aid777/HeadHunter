@@ -119,7 +119,7 @@ console.log(countries)
           < AutoCompliteTags placeholder="" type="text" label="Ключевые навыки" size="fieldset-md" items = {skills} onSelect={onSelect}/>
           
           <h3>Образование</h3>
-          <AddEducation />
+          <AddEducation onChange={()=>{}}/>
         </div>
 
     </main>

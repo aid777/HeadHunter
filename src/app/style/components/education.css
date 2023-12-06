@@ -9,3 +9,8 @@
     top: 20px;
     right: -30px;
 }
+
+.eds > a{
+    color: #1785e5;
+    cursor: pointer;
+}
